@@ -16,7 +16,7 @@ public class SeleniumCalculatorTest {
      
     @Before
     public void setup() {
-        // הגדרת דרייבר אוטומטית שמתאימה ל-Mac
+        // Automatic driver setup for Mac
         WebDriverManager.firefoxdriver().setup();
         
         browser = new FirefoxDriver();
@@ -28,15 +28,15 @@ public class SeleniumCalculatorTest {
      
     @Test
     public void testAddition() {
-        // לחיצה על 1 + 2 =
+        // Click 1 + 2
         browser.findElement(By.id("button01")).click();
         browser.findElement(By.id("buttonplus")).click();
         browser.findElement(By.id("button02")).click();
         
-        // לחיצה על שווה
+        // Click equals
         browser.findElement(By.id("buttonequals")).click();
         
-        // שליפת התוצאה משדה התצוגה (שימוש ב-getAttribute כי זה שדה Input)
+        // Get the result from the display field (input value)
         String result = browser.findElement(By.id("calculated-display")).getAttribute("value");
         
         System.out.println("Calculation Result: " + result); 
@@ -48,7 +48,7 @@ public class SeleniumCalculatorTest {
     @After
     public void tearDown() {
         if (browser != null) {
-            browser.quit(); // סוגר את הדפדפן כדי שלא יתקע את ה-Mac
+            browser.quit(); // Close browser to avoid leaving hanging processes
         }
     }
 }

@@ -18,11 +18,11 @@ public class AppTest {
      
      @Before
      public void setup() {
-          // WebDriverManager דואג להוריד ולהגדיר את הדרייבר המתאים ל-Mac באופן אוטומטי
+          // WebDriverManager downloads and configures the correct driver for Mac automatically
           WebDriverManager.firefoxdriver().setup();
           
           browser = new FirefoxDriver();
-          browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // 10 שניות זה בד"כ מספיק
+          browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // 10 seconds is usually enough
           browser.get("https://testpages.eviltester.com/styled/validation/input-validation.html");
      }
         
@@ -42,12 +42,12 @@ public class AppTest {
             
             String currentPage = browser.getCurrentUrl();
             
-            // לחיצה על כפתור השליחה
+            // Click the submit button
             browser.findElement(By.cssSelector("input[type='submit']")).click();
             
             String newPage = browser.getCurrentUrl();
             
-            // בדיקה שהכתובת השתנתה (כלומר הטופס נשלח בהצלחה)
+            // Verify URL changed (form was submitted successfully)
             assertNotEquals(currentPage, newPage);
     }
 

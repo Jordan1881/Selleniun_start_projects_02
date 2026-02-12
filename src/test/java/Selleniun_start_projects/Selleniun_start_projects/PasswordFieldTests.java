@@ -21,13 +21,13 @@ public class PasswordFieldTests {
           browser = new FirefoxDriver();
           browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
           
-          // הכתובת המדויקת של עמוד הבדיקה
+          // Exact URL of the test page
           browser.get("https://testpages.eviltester.com/apps/7-char-val/");
      }
 
      @Test
      public void EP_EverythingGood() {
-          // טסט טוב שבודק שהכל טוב
+          // Positive test case that verifies a valid value
           WebElement input = browser.findElement(By.name("characters"));
           input.sendKeys("Abc123*"); 
           browser.findElement(By.name("validate")).click();
@@ -38,7 +38,7 @@ public class PasswordFieldTests {
 
      @Test
      public void EP_InvalidCharacter() {
-          // טסט ששם תווים לא חוקיים
+          // Test case with invalid characters
           WebElement input = browser.findElement(By.name("characters"));
           input.sendKeys("Abc12#*"); 
           browser.findElement(By.name("validate")).click();
@@ -49,7 +49,7 @@ public class PasswordFieldTests {
 
      @Test
      public void EP_TooShort() {
-          // טסט עם מספר תווים לא תקין
+          // Test case with invalid number of characters
           WebElement input = browser.findElement(By.name("characters"));
           input.sendKeys("Abc1*"); 
           browser.findElement(By.name("validate")).click();
